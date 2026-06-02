@@ -1313,14 +1313,12 @@ export default function NotificationsPage() {
   // Firebase authentication and data fetching
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (!user) {
-        router.push("/login");
-      } else {
+     
         const unsubscribeNotifications = fetchNotifications();
         return () => {
           unsubscribeNotifications();
         };
-      }
+      
     });
 
     return () => unsubscribe();
